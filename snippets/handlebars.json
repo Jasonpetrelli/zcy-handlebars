@@ -1,0 +1,122 @@
+{
+  "if": {
+		"prefix": "if",
+		"body": "{{#if ${1:condition}}}\n\t${0}\n{{/if}}",
+		"description": "IF"
+	},
+	"ifelse": {
+		"prefix": "ifel",
+		"body": "{{#if ${1:condition}}}\n\t${2}\n{{else}}\n\t${0}\n{{/if}}",
+		"description": "IF ELSE"
+	},
+	"each": {
+		"prefix": "each",
+		"body": "{{#each ${1:list}}}\n\t${0}\n{{/each}}",
+		"description": "EACH"
+	},
+	"unless": {
+		"prefix": "un",
+		"body": "{{#unless ${1:list}}}\n\t${0}\n{{/unless}}",
+		"description": "UNLESS"
+  },
+	"unlesselse": {
+		"prefix": "unel",
+		"body": "{{#unless ${1:list}}}\n\t${0}\n{{else}}\n\t${2}\n{{/unless}}",
+		"description": "UNLESS ELSE"
+  },
+  "equals": {
+		"prefix": "eq",
+		"body": "{{#equals ${1:condition}}}\n\t${0}\n{{/equals}}",
+		"description": "EUQALS"
+	},
+	"equalselse": {
+		"prefix": "eqel",
+		"body": "{{#equals ${1:condition}}}\n\t${0}\n{{else}}\n\t${2}\n{{/equals}}",
+		"description": "EUQALS ELSE"
+	},
+  "json": {
+		"prefix": "js",
+		"body": "{{json}}",
+		"description": "JSON"
+	},
+  "add": {
+		"prefix": "ad",
+		"body": "{{add ${1} ${0}}}",
+		"description": "ADD"
+	},
+  "formatPrice": {
+		"prefix": "fop",
+		"body": "{{formatPrice ${0}}}}",
+		"description": "FORMAT PRICE"
+	},
+  "formatDate": {
+		"prefix": "fod",
+		"body": "{{formatDate ${0}}}}",
+		"description": "FORMAT DATE"
+	},
+  "of": {
+		"prefix": "of",
+		"body": "{{#of ${1:list}}}\n\t${0}\n{{/of}}",
+		"description": "OF"
+	},
+  "ofelse": {
+		"prefix": "ofel",
+		"body": "{{#of ${1:list}}}\n\t${0}\n{{else}}\n\t${2}\n{{/of}}",
+		"description": "OF ELSE"
+	},
+  "gt": {
+		"prefix": "gt",
+		"body": "{{gt ${1} ${0}}}",
+		"description": "GT"
+	},
+  "ifcond": {
+		"prefix": "ifc",
+		"body": "{{#ifCond ${1:condition}}}\n\t${0}\n{{/ifCond}}",
+		"description": "IFCOND"
+	},
+	"ifcondelse": {
+		"prefix": "ifcel",
+		"body": "{{#ifCond ${1:condition}}}\n\t${0}\n{{else}}\n\t${2}\n{{/ifCond}}",
+		"description": "IFCOND ELSE"
+	},
+  "match": {
+		"prefix": "mat",
+		"body": "{{#match ${1:condition}}}\n\t${0}\n{{/match}}",
+		"description": "MATCH"
+	},
+  "matchelse": {
+		"prefix": "matel",
+		"body": "{{#match ${1:condition}}}\n\t${0}\n{{else}}\n\t${2}\n{{/match}}",
+		"description": "MATCH ELSE"
+	},
+  "size": {
+		"prefix": "si",
+		"body": "{{size ${0}}}",
+		"description": "SIZE"
+	},
+  "regt": {
+		"prefix": "regt",
+		"body": "{{regt ${0}}}",
+		"description": "REGT"
+	},
+  "length": {
+		"prefix": "leng",
+		"body": "{{length ${0}}}",
+		"description": "LENGTH"
+	},
+  "between": {
+		"prefix": "bet",
+		"body": "{{between ${0}}}",
+		"description": "LENGTH"
+	},
+  "isArray": {
+		"prefix": "isar",
+		"body": "{{isArray ${0}}}",
+		"description": "IS ARRAY"
+	},
+  "component": {
+		"prefix": "com",
+		"body": "{{#component ${1}}}\n\t${0}\n{{/component}}",
+		"description": "COMPONENT"
+	}
+}
