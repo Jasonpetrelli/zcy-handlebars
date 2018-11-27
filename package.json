@@ -1,0 +1,43 @@
+{
+  "name": "zcy-handlebars",
+  "displayName": "zcy-handlebars",
+  "description": "政采云的handlebar模版扩展",
+  "publisher": "crystaldiyu",
+  "version": "0.0.3",
+  "engines": {
+    "vscode": "^1.29.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Jasonpetrelli/zcy-handlebars.git"
+	},
+  "contributes": {
+    "languages": [
+      {
+        "id": "handlebars",
+        "aliases": [
+          "Handlebars",
+          "handlebars"
+        ],
+        "extensions": [
+          ".handlebars",
+          ".hbr",
+          ".hbs",
+          ".tpl"
+        ]
+      }
+    ],
+    "snippets": [
+      {
+        "language": "handlebars",
+        "path": "./snippets/handlebars.json"
+      }
+    ]
+  },
+  "dependencies": {
+    "vsce": "^1.53.0"
+  }
+}
