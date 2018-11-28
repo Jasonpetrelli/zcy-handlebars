@@ -16,12 +16,12 @@
 	},
 	"unless": {
 		"prefix": "un",
-		"body": "{{#unless ${1:list}}}\n\t${0}\n{{/unless}}",
+		"body": "{{#unless ${1:condition}}}\n\t${0}\n{{/unless}}",
 		"description": "UNLESS"
   },
 	"unlesselse": {
 		"prefix": "unel",
-		"body": "{{#unless ${1:list}}}\n\t${0}\n{{else}}\n\t${2}\n{{/unless}}",
+		"body": "{{#unless ${1:condition}}}\n\t${0}\n{{else}}\n\t${2}\n{{/unless}}",
 		"description": "UNLESS ELSE"
   },
   "equals": {
@@ -40,18 +40,18 @@
 		"description": "JSON"
 	},
   "add": {
-		"prefix": "ad",
+		"prefix": "add",
 		"body": "{{add ${1} ${0}}}",
 		"description": "ADD"
 	},
   "formatPrice": {
-		"prefix": "fop",
-		"body": "{{formatPrice ${0}}}}",
+		"prefix": "forp",
+		"body": "{{formatPrice ${0}}}",
 		"description": "FORMAT PRICE"
 	},
   "formatDate": {
-		"prefix": "fod",
-		"body": "{{formatDate ${0}}}}",
+		"prefix": "ford",
+		"body": "{{formatDate ${0}}}",
 		"description": "FORMAT DATE"
 	},
   "of": {
@@ -68,6 +68,11 @@
 		"prefix": "gt",
 		"body": "{{gt ${1} ${0}}}",
 		"description": "GT"
+	},
+  "lt": {
+		"prefix": "lt",
+		"body": "{{lt ${1} ${0}}}",
+		"description": "LT"
 	},
   "ifcond": {
 		"prefix": "ifc",
@@ -90,7 +95,7 @@
 		"description": "MATCH ELSE"
 	},
   "size": {
-		"prefix": "si",
+		"prefix": "size",
 		"body": "{{size ${0}}}",
 		"description": "SIZE"
 	},
@@ -115,7 +120,7 @@
 		"description": "IS ARRAY"
 	},
   "component": {
-		"prefix": "com",
+		"prefix": "comp",
 		"body": "{{#component ${1}}}\n\t${0}\n{{/component}}",
 		"description": "COMPONENT"
 	}

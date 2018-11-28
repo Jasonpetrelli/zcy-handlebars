@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html id="docs">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Handlerbar Help</title>
+    <link href="all.css" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Handlebar Help</h1>
+    <div class="toc-container">
+        <div class="tree_down">
+            <h2 class="first-heading"><code>介绍</code></h2>
+            <ul>
+                <li><a href="#index"><code><span class="me1">项目中的Handlebar</span></code></a></li>
+            </ul>
+        </div>
+        <div class="tree_down">
+            <h2 class="first-heading"><code>后端渲染注册事件</code></h2>
+            <ul>
+                <li><a href="#json"><code><span class="me1">{{json}}</span></code></a></li>
+                <li><a href="#add"><code><span class="me1">{{add}}</span></code></a></li>
+                <li><a href="#formatPrice"><code><span class="me1">{{formatPrice}}</span></code></a></li>
+                <li><a href="#formatDate"><code><span class="me1">{{formatDate}}</span></code></a></li>
+                <li><a href="#of"><code><span class="me1">{{of}}</span></code></a></li>
+                <li><a href="#gt"><code><span class="me1">{{gt}}</span></code></a></li>
+                <li><a href="#equals"><code><span class="me1">{{equals}}</span></code></a></li>
+                <li><a href="#ifCond"><code><span class="me1">{{ifCond}}</span></code></a></li>
+                <li><a href="#match"><code><span class="me1">{{match}}</span></code></a></li>
+                <li><a href="#size"><code><span class="me1">{{size}}</span></code></a></li>
+                <li><a href="#rget"><code><span class="me1">{{rget}}</span></code></a></li>
+            </ul>
+        </div>
+        <div class="tree_down">
+            <h2 class="first-heading"><code>前端渲染注册事件</code></h2>
+            <ul>
+                <li><a href="#json"><code><span class="me1">{{json}}</span></code></a></li>
+                <li><a href="#add"><code><span class="me1">{{add}}</span></code></a></li>
+                <li><a href="#formatPrice"><code><span class="me1">{{formatPrice}}</span></code></a></li>
+                <li><a href="#formatDate"><code><span class="me1">{{formatDate}}</span></code></a></li>
+                <li><a href="#of"><code><span class="me1">{{of}}</span></code></a></li>
+                <li><a href="#gt"><code><span class="me1">{{gt}}</span></code></a></li>
+                <li><a href="#equals"><code><span class="me1">{{equals}}</span></code></a></li>
+                <li><a href="#ifCond"><code><span class="me1">{{ifCond}}</span></code></a></li>
+                <li><a href="#lt"><code><span class="me1">{{lt}}</span></code></a></li>
+                <li><a href="#length"><code><span class="me1">{{length}}</span></code></a></li>
+                <!--<li><a href="#gtTime"><code><span class="me1">{{gtTime}}</span></code></a></li>-->
+                <li><a href="#isArray"><code><span class="me1">{{isArray}}</span></code></a></li>
+                <li><a href="#between"><code><span class="me1">{{between}}</span></code></a></li>
+                <!--<li><a href="#divide"><code><span class="me1">{{divide}}</span></code></a></li>-->
+                <!--<li><a href="#findLastIndex"><code><span class="me1">{{equalsRemainder}}</span></code></a></li>-->
+                <!--<li><a href="#flatten"><code><span class="me1">{{formatBudgetAmount}}</span></code></a></li>-->
+                <!--<li><a href="#flattenDeep"><code><span class="me1">{{formatFileSize}}</span></code></a></li>-->
+                <!--<li><a href="#flattenDepth"><code><span class="me1">{{formatNum}}</span></code></a></li>-->
+                <!--<li><a href="#fromPairs"><code><span class="me1">{{formatBankAccount}}</span></code></a></li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="doc-container">
+        <div>
+            <h2 class="first-heading"><code>关于Handlebar</code></h2>
+            <div>
+                <h3 id="index"><a href="#index">#</a>&nbsp;<code>项目中Handlebar介绍</code></h3>
+                <p><a href="" title="View in source">Ⓢ(源文件)</a> </p>
+                <p>Handlebars 是 JavaScript 一个语义模板库，通过对view和data的分离来快速构建Web模板。</p>
+                <h4>项目</h4>
+                <p>项目中的handlerbar包含2种形式，</p>
+                <p>一、后端渲染页面的注册事件，封装在Pampas中，在调用dubbo接口，后端渲染页面时使用。</p>
+                <p>二、前端渲染页面的注册事件。一部分封装在pokeball中，一部分在app下的extras/handlebars.coffee中</p>
+                <p class="notice">注：在后端渲染页面时不能使用前端的页面的注册事件。</p>
+                <h4>前端渲染handlerbar</h4>
+                <p>
+                    1、var part = Handlebars.templates[url];<br/>
+                       &nbsp;&nbsp;&nbsp;&nbsp;加载静态模板，url为路径。返回一个function<br/>
+                    2、var template = part(DATA);<br/>
+                       &nbsp;&nbsp;&nbsp;&nbsp; 加载模板数据，返回渲染数据后的模板。<br/>
+                    3、 appendTo  dom<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;append 到相应的节点元素中。
+                </p>
+
+                <hr>
+                <hr>
+            </div>
+            <div>
+                <h3 id="json"><a href="#json">#</a>&nbsp;<code>{{json obj}}</code></h3>
+                <p>行级 helper 。将对象按 json 输出。</p>
+                <p class="notice">前后端渲染页面通用</p>
+                <h4>source</h4>
+                <p>Handlebars.registerHelper 'pp', (json, options) -><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;JSON.stringify(json)</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>object</code> <em>(json)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="co1">//obj = {key:value} </span>
+                        <span class="me1">{{json obj}}</span>
+                        <span class="co1">//➜ "{key:value}" </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div>
+                <h3 id="add"><a href="#add">#</a>&nbsp;<code>{{add a b}}</code></h3>
+                <p>行级 helper 。将两个数字相加。</p>
+                <h4>source</h4>
+                <p>Handlebars.registerHelper 'add', (a,b, options) -><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;a + b</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>object</code> <em>(json)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="co1">//a = 1,b = 2 </span>
+                        <span class="me1">{{add a b}}</span>
+                        <span class="co1">//➜ 3</span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div>
+                <h3 id="formatPrice"><a href="#formatPrice">#</a>&nbsp;<code>{{formatPrice price}}</code></h3>
+                <p>行级 helper 。金额格式化输出，输入变量单位为分。
+
+                    例如输入 100 ，输出 1.00 。</p>
+                <h4>source</h4>
+                <p>--</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>price</code> <em>(number)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1">{{formatPrice 13456}}</span>
+                        <span class="co1">//➜ 134.56 </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div>
+                <h3 id="formatDate"><a href="#formatDate">#</a>&nbsp;<code>{{formatDate date type}}</code></h3>
+                <p>行级 helper 。日期格式化输出，预置三种格式，也可以自定义格式。
+
+                    预置格式：
+                    <ol>
+                        <li>gmt: EEE MMM dd HH:mm:ss Z yyyy</li>
+                        <li>day: yyyy-MM-dd</li>
+                        <li>default: yyyy-MM-dd HH:mm:ss</li>
+                    </ol>
+                    </p>
+                <h4>source</h4>
+                <p>--</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>date</code> <em>(string or number)</em></li>
+                    <li><code>type</code> <em>(day or gmt)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1">{{json 1471942982634 day}}</span>
+                        <span class="co1">//➜ 2016-08-23 </span>
+                        <span class="me1">{{json 1471942982634}}</span>
+                        <span class="co1">//➜ 2016-08-23 17:04:33 </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+
+            <div class="of-part">
+                <h3 id="of"><a href="#of">#</a>&nbsp;<code>{{#of a b}}{{/of}}</code></h3>
+                <p>块级 helper 。判断对象是否属于一个约定格式的集合。<br/>
+
+                    集合的格式为字符串，多个值用逗号隔开。</p>
+                <h4>source</h4>
+                <p>--</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>a</code> <em>(string)</em></li>
+                    <li><code>b</code> <em>(collect)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="co1">//a = "str1", b ="str1,str2,str3"</span>
+                        <span class="me1">{{#if}}</span>
+                        <span class="me1" style="margin-left: 20px;">{{#of a b}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/of}}</span>
+                        <span class="me1">{{/if}}</span>
+                        <span class="co1">//➜ show true </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="gt-part">
+                <h3 id="gt"><a href="#gt">#</a>&nbsp;<code>{{#gt a b}}{{/gt}}</code></h3>
+                <p>块级 helper 。大于判断，可由 ifCond 的 > 取代。</p>
+                <h4>source</h4>
+                <p>Handlebars.registerHelper "gt", (a, b, options) -><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if a > b<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)</p><br/>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>a</code> <em>(number)</em></li>
+                    <li><code>b</code> <em>(number)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1" style="margin-left: 20px;">{{#gt 5 2}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/gt}}</span>
+                        <span class="co1">//➜ show true </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="lt-part">
+                <h3 id="lt"><a href="#lt">#</a>&nbsp;<code>{{#lt a b}}{{/lt}}</code></h3>
+                <p>判断a是否小于b</p>
+                <h4>source</h4>
+                <p>Handlebars.registerHelper "lt", (a, b, options) -><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if a < b<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)</p><br/>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>a</code> <em>(number)</em></li>
+                    <li><code>b</code> <em>(number)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1" style="margin-left: 20px;">{{#lt 5 2}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/lt}}</span>
+                        <span class="co1">//➜ show false </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="equals-part">
+                <h3 id="equals"><a href="#equals">#</a>&nbsp;<code>{{#equals a b}}{{/equals}}</code></h3>
+                <p>块级 helper 。判断两个对象是否相等（值相等，非内存相等），可由 ifCond 的 == 取代。</p>
+                <h4>source</h4>
+                <p>Handlebars.registerHelper "equals", (a, b, options) -><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if ((a != null ? a.toString() : void 0) === (b != null ? b.toString() : void 0)) {<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;else<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)</p><br/>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>a</code> <em>(number)</em></li>
+                    <li><code>b</code> <em>(number)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1" style="margin-left: 20px;">{{#equals 5 5}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/equals}}</span>
+                        <span class="co1">//➜ show true </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="ifCond-part">
+                <h3 id="ifCond"><a href="#ifCond">#</a>&nbsp;<code>{{#ifCond a "!=" b}}{{/ifCond}}</code></h3>
+                <p>块级 helper 。多条件判断语句。支持的判断条件有：== , != , === , !== , && , || , < , <= , > , >= 。</p>
+                <h4>source</h4>
+                <p>--</p><br/>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>a</code> <em>(number or string)</em></li>
+                    <li><code>"string"</code> <em>("=="、">"、"||"、"&&")</em></li>
+                    <li><code>b</code> <em>(number or string)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1" style="margin-left: 20px;">{{#ifCond 5 "!=" 4}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/ifCond}}</span>
+                        <span class="co1">//➜ show false </span>
+                        <span class="me1" style="margin-left: 20px;">{{#ifCond false "||" true}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/ifCond}}</span>
+                        <span class="co1">//➜ show true </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="match-part">
+                <h3 id="match"><a href="#match">#</a>&nbsp;<code>{{match "d+" string}}</code></h3>
+                <p>块级 helper 。判断正则表达式是否匹配。</p>
+                <h4>source</h4>
+                <p>--</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>regular</code> <em>(string)</em></li>
+                    <li><code>string</code> <em>(string)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1" style="margin-left: 20px;">{{#match "^[0-9]*$" "34343dd"}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/match}}</span>
+                        <span class="co1">//➜ show false </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="size-part">
+                <h3 id="size"><a href="#size">#</a>&nbsp;<code>{{size obj}}</code></h3>
+                <p>行级 helper 。取集合的大小，Collection 或 Map 。</p>
+                <h4>source</h4>
+                <p>--</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>obj</code> <em>(Collection or Map )</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="co1">//obj = [2,3,4,8] </span>
+                        <span class="me1">{{size obj}}</span>
+                        <span class="co1">//➜ 4 </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="rget">
+                <h3 id="rget"><a href="#rget">#</a>&nbsp;<code>{{rget string}}</code></h3>
+                <p>行级 helper 。随机获取一个约定格式集合中的元素。<br/>
+
+                    集合的格式为字符串，多个值用逗号隔开。</p>
+                <h4>source</h4>
+                <p>--</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>string</code> <em>(string)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1">{{rget "value1,value2,value3"}}</span>
+                        <span class="co1">//➜ value2 </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="length-part">
+                <h3 id="length"><a href="#length">#</a>&nbsp;<code>{{length a}}</code></h3>
+                <p>获取参数的长度</p>
+                <h4>source</h4>
+                <p>Handlebars.registerHelper 'length', (a, options)-><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;length = a.length
+                </p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>arguments</code> <em>(String or Arrary)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="co1">//a = [1,2,3,4,7] </span>
+                        <span class="me1">{{length a}}</span>
+                        <span class="co1">//➜ 5 </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="isArray-part">
+                <h3 id="isArray"><a href="#isArray">#</a>&nbsp;<code>{{isArray a}}</code></h3>
+                <p>块级help,判断是否数组类型</p>
+                <h4>source</h4>
+                <p>--</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>a</code> <em>(all)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1" style="margin-left: 20px;">{{#isArray [1,2]}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/isArray}}</span>
+                        <span class="co1">//➜ show true </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+            <div class="between-part">
+                <h3 id="between"><a href="#between">#</a>&nbsp;<code>{{between a b c}}</code></h3>
+                <p>块级help，判断a是否介于b、c之间，即判断是否 c > = a > = b。都为number类型</p>
+                <h4>source</h4>
+                <p>Handlebars.registerHelper 'pp', (json, options) -><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;JSON.stringify(json)</p>
+                <h4>Arguments</h4>
+                <ol>
+                    <li><code>a</code> <em>(number)</em></li>
+                    <li><code>b</code> <em>(number)</em></li>
+                    <li><code>c</code> <em>(number)</em></li>
+                </ol>
+                <h4>Example</h4>
+                <pre class="newcss">
+                    <code>
+                        <span class="me1" style="margin-left: 20px;">{{#between 5 2 8}}</span>
+                        <span class="me1" style="margin-left: 40px;">show true</span>
+                        <span class="me1" style="margin-left: 20px;">{{else}}</span>
+                        <span class="me1" style="margin-left: 40px;">show false</span>
+                        <span class="me1" style="margin-left: 20px;">{{/isArray}}</span>
+                        <span class="co1">//➜ show true </span>
+                    </code></pre>
+                <hr>
+                <hr>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
