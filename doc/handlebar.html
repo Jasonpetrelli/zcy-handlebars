@@ -1,192 +1,765 @@
 <!DOCTYPE html>
 <html id="docs">
 <head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Handlerbar Help</title>
-    <link href="all.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Handlerbar Help</title>
+  <style>
+    .description,
+    h1,
+    h2,
+    h3,
+    h4,
+    ol,
+    p,
+    ul {
+      word-wrap: break-word
+    }
+    
+    body,
+    h1,
+    h2,
+    html,
+    p {
+      margin: 0;
+      padding: 0
+    }
+    
+    html {
+      background: #d3d3d3;
+      height: 100%;
+      color: #222;
+      font-size: 100%
+    }
+    
+    body {
+      background: #fff;
+      width: 60em;
+      margin: 0 auto;
+      -webkit-box-shadow: 0 0 2.5em #5d656c;
+      -moz-box-shadow: 0 0 2.5em #5d656c;
+      box-shadow: 0 0 2.5em #5d656c;
+      font: 1em/1.7 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      min-height: 100%
+    }
+    
+    code {
+      font-family: Consolas, Courier New, monospace
+    }
+    
+    pre {
+      background: #0d152a;
+      margin: 1em 0;
+      padding: .5em 20px;
+      overflow-x: scroll;
+      -webkit-overflow-scrolling: touch
+    }
+    
+    pre.intro {
+      font-size: 1.2em
+    }
+    
+    pre::-webkit-scrollbar {
+      height: 8px
+    }
+    
+    pre::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, .8);
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .5);
+      -webkit-border-radius: 10px;
+      border-radius: 10px
+    }
+    
+    pre::-webkit-scrollbar-thumb:window-inactive {
+      background: rgba(255, 255, 255, .4)
+    }
+    
+    h1 span,
+    pre {
+      color: #ddd
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    ol,
+    p,
+    ul {
+      font-weight: 400;
+      padding: 0 20px
+    }
+    
+    #docs h3 .sy0,
+    .sy0,
+    h4 {
+      font-weight: 700
+    }
+    
+    hgroup h1 {
+      display: inline
+    }
+    
+    hgroup h2 {
+      font-size: 1.38em
+    }
+    
+    h2,
+    h3,
+    h4 {
+      margin: 0 0 .5em
+    }
+    
+    a {
+      color: #222;
+      border-bottom: 1px solid #ddd;
+      text-decoration: none
+    }
+    
+    a:focus,
+    a:hover {
+      border-color: #222
+    }
+    
+    .a-img,
+    a img {
+      border: 0
+    }
+    
+    abbr[title] {
+      border-bottom: 1px dotted #ddd;
+      cursor: help
+    }
+    
+    hr {
+      display: none
+    }
+    
+    p {
+      margin-bottom: 1em
+    }
+    
+    ol,
+    ul {
+      margin-left: 2em
+    }
+    
+    ol ol,
+    ul ul {
+      margin-left: 1em;
+      padding: 0
+    }
+    
+    footer {
+      display: block;
+      background: #eee;
+      padding: 1em 0;
+      text-align: center
+    }
+    
+    .a-img img {
+      padding: .5em 0 0
+    }
+    
+    .multiline-items li {
+      padding-bottom: 1em
+    }
+    
+    .multiline-items li.last-item {
+      padding-bottom: 0
+    }
+    
+    .br0 {
+      color: #090
+    }
+    
+    .co1 {
+      color: #060
+    }
+    
+    .co2 {
+      color: #096
+    }
+    
+    .kw1,
+    .kw3 {
+      color: #006
+    }
+    
+    .kw2 {
+      color: #036
+    }
+    
+    .me1 {
+      color: #606
+    }
+    
+    .nu0 {
+      color: #c00
+    }
+    
+    .st0 {
+      color: #36c
+    }
+    
+    .sy0 {
+      color: #393
+    }
+    
+    pre .co1 {
+      color: #aeaeae
+    }
+    
+    .es0,
+    pre .st0 {
+      color: #61ce3c
+    }
+    
+    pre .co2 {
+      color: #fff
+    }
+    
+    pre .kw2,
+    pre .kw3,
+    pre .nu0 {
+      color: #fbde2d
+    }
+    
+    pre .me1 {
+      color: #8da6ce
+    }
+    
+    pre .br0,
+    pre .kw1,
+    pre .sy0 {
+      color: #ddd
+    }
+    
+    #docs {
+      background: #fff
+    }
+    
+    #docs body {
+      font-size: .85em;
+      width: 100%
+    }
+    
+    #docs a.alias {
+      opacity: .5
+    }
+    
+    #docs div div div {
+      border: 1px solid #d3d3d3;
+      border-top: 0;
+      margin: 0 .5em 1em
+    }
+    
+    #docs h1,
+    #docs h2,
+    #docs h3,
+    #docs h4,
+    #docs ol,
+    #docs p,
+    #docs ul {
+      padding: 0 10px
+    }
+    
+    #docs pre {
+      margin: 0;
+      padding: .5em 10px
+    }
+    
+    #docs ul li {
+      list-style-type: none;
+      margin: 0 0 0 -.9em
+    }
+    
+    #docs h2 {
+      margin: .5em 0 0
+    }
+    
+    #docs h3 {
+      background: #6d426d;
+      box-shadow: 0 .25em .5em #d3d3d3;
+      border-top: 1px solid #d3d3d3;
+      border-bottom: 1px solid #d3d3d3;
+      margin: .5em 0;
+      padding: .75em 0 .75em 10px;
+      position: relative
+    }
+    
+    #docs h3>code {
+      color: #eee
+    }
+    
+    #docs h3 a {
+      position: absolute;
+      top: 0
+    }
+    
+    #docs h3 .br0 {
+      color: #fc83ff
+    }
+    
+    #docs h3 .kw2 {
+      color: #71d0c9
+    }
+    
+    #docs h3 .me1 {
+      color: #fff
+    }
+    
+    #docs h3 .nu0 {
+      color: #d0cb71
+    }
+    
+    #docs h3 .sy0 {
+      color: #df74e2
+    }
+    
+    #docs footer {
+      height: 3em;
+      margin-top: 1.5em;
+      width: 100%
+    }
+    
+    #social {
+      height: 20px
+    }
+    
+    #social .twitter-follow-button {
+      width: 127px!important
+    }
+    
+    #social .twitter-follow-button,
+    .twitter-share-button {
+      font-size: .8em;
+      vertical-align: top
+    }
+    
+    #carbonads {
+      display: block;
+      padding: 1em;
+      border: 1px solid #6d426d;
+      white-space: normal;
+      line-height: 1.5;
+      max-width: 400px;
+      margin: .5em 1em 2em
+    }
+    
+    #carbonads a {
+      border-bottom: none;
+      color: #6d426d
+    }
+    
+    #carbonads span {
+      display: block;
+      overflow: hidden
+    }
+    
+    .carbon-text {
+      display: block;
+      margin-bottom: .8em;
+      text-align: left;
+      padding: 8px 0
+    }
+    
+    .carbon-img {
+      display: block;
+      margin-bottom: 1em
+    }
+    
+    .carbon-img img {
+      display: block;
+      margin: 0 auto
+    }
+    
+    .carbon-poweredby {
+      display: block;
+      text-align: right;
+      float: right;
+      font-size: .8em
+    }
+    
+    @media (max-width:959px) {
+      body {
+        border: 0;
+        margin: 0;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        width: auto
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      ol,
+      p,
+      ul {
+        padding: 0 10px
+      }
+      pre {
+        padding: 5px 10px!important
+      }
+      #carbonads {
+        margin-left: auto;
+        margin-right: auto
+      }
+      #social {
+        height: auto
+      }
+      .carbon-img {
+        float: left
+      }
+      .toc-container a {
+        display: block;
+        padding: 5px
+      }
+      .toc-container a:focus,
+      .toc-container a:hover {
+        background-color: #EEE
+      }
+      .toc-container a:active {
+        background-color: #CCC
+      }
+    }
+    
+    @media (min-width:960px) {
+      #docs body {
+        box-shadow: none;
+        height: 100%;
+        margin: 0
+      }
+      #docs a[href="#docs"],
+      #docs footer {
+        display: none
+      }
+      #docs h1 {
+        position: fixed;
+        background-color: #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1
+      }
+      #docs h3 a {
+        display: block;
+        position: relative;
+        visibility: hidden;
+        top: -4em
+      }
+      #docs .toc-container {
+        background: #fff;
+        bottom: 0;
+        left: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        position: fixed;
+        top: 3.5em;
+        white-space: nowrap;
+        width: 20%;
+        -webkit-overflow-scrolling: touch
+      }
+      #docs .toc-container h2,
+      #docs .toc-container ul {
+        margin-top: 0;
+        padding: 0 10px
+      }
+      #docs .doc-container {
+        background: #fff;
+        width: 80%;
+        margin-left: 20%;
+        padding-top: 3.5em
+      }
+      #docs .doc-container .first-heading {
+        margin-top: 0
+      }
+    }
+    
+    @media (-ms-high-contrast:active)and (max-width:1280px),
+    (-ms-high-contrast:none)and (max-width:1280px) {
+      #docs .doc-container,
+      #docs .toc-container {
+        position: relative;
+        top: auto;
+        width: 100%
+      }
+      #docs .doc-container .first-heading {
+        margin-top: .5em
+      }
+      #docs a[href="#docs"] {
+        display: inline
+      }
+      #docs footer {
+        display: block
+      }
+    }
+    
+    @media (orientation:portrait)and (min-device-width:720px)and (max-device-width:768px),
+    (orientation:landscape)and (device-width:1280px)and (max-device-height:768px) {
+      @-ms-viewport {
+        width: 80%
+      }
+    }
+    
+    #docs .doc-container pre.newcss code span {
+      float: left;
+    }
+    
+    p.notice {
+      font-size: 15px;
+      color: red;
+    }
+    
+    #docs .tab_switch {
+      border: 0;
+    }
+    
+    #docs .tab_switch textarea {
+      width: 100%;
+      border: 0;
+      height: 400px;
+    }
+    
+    #docs .tab_switch img {
+      width: 100%;
+    }
+    
+    #docs .tab_switch .nav_tab {
+      border: 0;
+      background-color: #ddd;
+    }
+    
+    #docs .tab_switch div {
+      border: 0;
+    }
+    
+    #docs .tab_switch ul {
+      text-align: center;
+    }
+    
+    #docs .tab_switch ul li {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 0;
+    }
+    
+    #docs .tab_switch ul li:hover {
+      cursor: pointer;
+    }
+    
+    #docs .tab_switch ul li.active {
+      background-color: white;
+      border: 1px solid #bbb;
+      border-bottom: 0;
+    }
+    
+    .hide {
+      display: none!important;
+    }
+    
+    .copy {
+      text-align: right;
+    }
+    
+    .nav_content h2 {
+      border-top: 1px solid black;
+    }
+    
+    .red {
+      color: red;
+    }
+    
+    .doc-container textarea {
+      background-color: black;
+      color: #8da6ce;
+      font-size: 17px;
+    }
+    
+    .copy2 {
+      text-align: inherit;
+      margin-top: 32px;
+    }
+    
+    .copy2 a {
+      float: right;
+    }
+  </style>
 
 </head>
-<body>
-    <h1>Handlebar Help</h1>
-    <div class="toc-container">
-        <div class="tree_down">
-            <h2 class="first-heading"><code>介绍</code></h2>
-            <ul>
-                <li><a href="#index"><code><span class="me1">项目中的Handlebar</span></code></a></li>
-            </ul>
-        </div>
-        <div class="tree_down">
-            <h2 class="first-heading"><code>后端渲染注册事件</code></h2>
-            <ul>
-                <li><a href="#json"><code><span class="me1">{{json}}</span></code></a></li>
-                <li><a href="#add"><code><span class="me1">{{add}}</span></code></a></li>
-                <li><a href="#formatPrice"><code><span class="me1">{{formatPrice}}</span></code></a></li>
-                <li><a href="#formatDate"><code><span class="me1">{{formatDate}}</span></code></a></li>
-                <li><a href="#of"><code><span class="me1">{{of}}</span></code></a></li>
-                <li><a href="#gt"><code><span class="me1">{{gt}}</span></code></a></li>
-                <li><a href="#equals"><code><span class="me1">{{equals}}</span></code></a></li>
-                <li><a href="#ifCond"><code><span class="me1">{{ifCond}}</span></code></a></li>
-                <li><a href="#match"><code><span class="me1">{{match}}</span></code></a></li>
-                <li><a href="#size"><code><span class="me1">{{size}}</span></code></a></li>
-                <li><a href="#rget"><code><span class="me1">{{rget}}</span></code></a></li>
-            </ul>
-        </div>
-        <div class="tree_down">
-            <h2 class="first-heading"><code>前端渲染注册事件</code></h2>
-            <ul>
-                <li><a href="#json"><code><span class="me1">{{json}}</span></code></a></li>
-                <li><a href="#add"><code><span class="me1">{{add}}</span></code></a></li>
-                <li><a href="#formatPrice"><code><span class="me1">{{formatPrice}}</span></code></a></li>
-                <li><a href="#formatDate"><code><span class="me1">{{formatDate}}</span></code></a></li>
-                <li><a href="#of"><code><span class="me1">{{of}}</span></code></a></li>
-                <li><a href="#gt"><code><span class="me1">{{gt}}</span></code></a></li>
-                <li><a href="#equals"><code><span class="me1">{{equals}}</span></code></a></li>
-                <li><a href="#ifCond"><code><span class="me1">{{ifCond}}</span></code></a></li>
-                <li><a href="#lt"><code><span class="me1">{{lt}}</span></code></a></li>
-                <li><a href="#length"><code><span class="me1">{{length}}</span></code></a></li>
-                <!--<li><a href="#gtTime"><code><span class="me1">{{gtTime}}</span></code></a></li>-->
-                <li><a href="#isArray"><code><span class="me1">{{isArray}}</span></code></a></li>
-                <li><a href="#between"><code><span class="me1">{{between}}</span></code></a></li>
-                <!--<li><a href="#divide"><code><span class="me1">{{divide}}</span></code></a></li>-->
-                <!--<li><a href="#findLastIndex"><code><span class="me1">{{equalsRemainder}}</span></code></a></li>-->
-                <!--<li><a href="#flatten"><code><span class="me1">{{formatBudgetAmount}}</span></code></a></li>-->
-                <!--<li><a href="#flattenDeep"><code><span class="me1">{{formatFileSize}}</span></code></a></li>-->
-                <!--<li><a href="#flattenDepth"><code><span class="me1">{{formatNum}}</span></code></a></li>-->
-                <!--<li><a href="#fromPairs"><code><span class="me1">{{formatBankAccount}}</span></code></a></li>-->
-            </ul>
-        </div>
-    </div>
-    <div class="doc-container">
-        <div>
-            <h2 class="first-heading"><code>关于Handlebar</code></h2>
-            <div>
-                <h3 id="index"><a href="#index">#</a>&nbsp;<code>项目中Handlebar介绍</code></h3>
-                <p><a href="" title="View in source">Ⓢ(源文件)</a> </p>
-                <p>Handlebars 是 JavaScript 一个语义模板库，通过对view和data的分离来快速构建Web模板。</p>
-                <h4>项目</h4>
-                <p>项目中的handlerbar包含2种形式，</p>
-                <p>一、后端渲染页面的注册事件，封装在Pampas中，在调用dubbo接口，后端渲染页面时使用。</p>
-                <p>二、前端渲染页面的注册事件。一部分封装在pokeball中，一部分在app下的extras/handlebars.coffee中</p>
-                <p class="notice">注：在后端渲染页面时不能使用前端的页面的注册事件。</p>
-                <h4>前端渲染handlerbar</h4>
-                <p>
-                    1、var part = Handlebars.templates[url];<br/>
-                       &nbsp;&nbsp;&nbsp;&nbsp;加载静态模板，url为路径。返回一个function<br/>
-                    2、var template = part(DATA);<br/>
-                       &nbsp;&nbsp;&nbsp;&nbsp; 加载模板数据，返回渲染数据后的模板。<br/>
-                    3、 appendTo  dom<br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;append 到相应的节点元素中。
-                </p>
 
-                <hr>
-                <hr>
-            </div>
-            <div>
-                <h3 id="json"><a href="#json">#</a>&nbsp;<code>{{json obj}}</code></h3>
-                <p>行级 helper 。将对象按 json 输出。</p>
-                <p class="notice">前后端渲染页面通用</p>
-                <h4>source</h4>
-                <p>Handlebars.registerHelper 'pp', (json, options) -><br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;JSON.stringify(json)</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>object</code> <em>(json)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+<body>
+  <h1>Handlebar Help</h1>
+  <div class="toc-container">
+    <div class="tree_down">
+      <h2 class="first-heading"><code>介绍</code></h2>
+      <ul>
+        <li><a href="#index"><code><span class="me1">项目中的Handlebar</span></code></a></li>
+      </ul>
+    </div>
+    <div class="tree_down">
+      <h2 class="first-heading"><code>后端渲染注册事件</code></h2>
+      <ul>
+        <li><a href="#json"><code><span class="me1">{{json}}</span></code></a></li>
+        <li><a href="#add"><code><span class="me1">{{add}}</span></code></a></li>
+        <li><a href="#formatPrice"><code><span class="me1">{{formatPrice}}</span></code></a></li>
+        <li><a href="#formatDate"><code><span class="me1">{{formatDate}}</span></code></a></li>
+        <li><a href="#of"><code><span class="me1">{{of}}</span></code></a></li>
+        <li><a href="#gt"><code><span class="me1">{{gt}}</span></code></a></li>
+        <li><a href="#equals"><code><span class="me1">{{equals}}</span></code></a></li>
+        <li><a href="#ifCond"><code><span class="me1">{{ifCond}}</span></code></a></li>
+        <li><a href="#match"><code><span class="me1">{{match}}</span></code></a></li>
+        <li><a href="#size"><code><span class="me1">{{size}}</span></code></a></li>
+        <li><a href="#rget"><code><span class="me1">{{rget}}</span></code></a></li>
+      </ul>
+    </div>
+    <div class="tree_down">
+      <h2 class="first-heading"><code>前端渲染注册事件</code></h2>
+      <ul>
+        <li><a href="#json"><code><span class="me1">{{json}}</span></code></a></li>
+        <li><a href="#add"><code><span class="me1">{{add}}</span></code></a></li>
+        <li><a href="#formatPrice"><code><span class="me1">{{formatPrice}}</span></code></a></li>
+        <li><a href="#formatDate"><code><span class="me1">{{formatDate}}</span></code></a></li>
+        <li><a href="#of"><code><span class="me1">{{of}}</span></code></a></li>
+        <li><a href="#gt"><code><span class="me1">{{gt}}</span></code></a></li>
+        <li><a href="#equals"><code><span class="me1">{{equals}}</span></code></a></li>
+        <li><a href="#ifCond"><code><span class="me1">{{ifCond}}</span></code></a></li>
+        <li><a href="#lt"><code><span class="me1">{{lt}}</span></code></a></li>
+        <li><a href="#length"><code><span class="me1">{{length}}</span></code></a></li>
+        <!--<li><a href="#gtTime"><code><span class="me1">{{gtTime}}</span></code></a></li>-->
+        <li><a href="#isArray"><code><span class="me1">{{isArray}}</span></code></a></li>
+        <li><a href="#between"><code><span class="me1">{{between}}</span></code></a></li>
+        <!--<li><a href="#divide"><code><span class="me1">{{divide}}</span></code></a></li>-->
+        <!--<li><a href="#findLastIndex"><code><span class="me1">{{equalsRemainder}}</span></code></a></li>-->
+        <!--<li><a href="#flatten"><code><span class="me1">{{formatBudgetAmount}}</span></code></a></li>-->
+        <!--<li><a href="#flattenDeep"><code><span class="me1">{{formatFileSize}}</span></code></a></li>-->
+        <!--<li><a href="#flattenDepth"><code><span class="me1">{{formatNum}}</span></code></a></li>-->
+        <!--<li><a href="#fromPairs"><code><span class="me1">{{formatBankAccount}}</span></code></a></li>-->
+      </ul>
+    </div>
+  </div>
+  <div class="doc-container">
+    <div>
+      <h2 class="first-heading"><code>关于Handlebar</code></h2>
+      <div>
+        <h3 id="index"><a href="#index">#</a>&nbsp;<code>项目中Handlebar介绍</code></h3>
+        <p><a href="" title="View in source">Ⓢ(源文件)</a> </p>
+        <p>Handlebars 是 JavaScript 一个语义模板库，通过对view和data的分离来快速构建Web模板。</p>
+        <h4>项目</h4>
+        <p>项目中的handlerbar包含2种形式，</p>
+        <p>一、后端渲染页面的注册事件，封装在Pampas中，在调用dubbo接口，后端渲染页面时使用。</p>
+        <p>二、前端渲染页面的注册事件。一部分封装在pokeball中，一部分在app下的extras/handlebars.coffee中</p>
+        <p class="notice">注：在后端渲染页面时不能使用前端的页面的注册事件。</p>
+        <h4>前端渲染handlerbar</h4>
+        <p>
+          1、var part = Handlebars.templates[url];<br/> &nbsp;&nbsp;&nbsp;&nbsp;加载静态模板，url为路径。返回一个function
+          <br/> 2、var template = part(DATA);<br/> &nbsp;&nbsp;&nbsp;&nbsp; 加载模板数据，返回渲染数据后的模板。<br/> 3、 appendTo dom<br/> &nbsp;&nbsp;&nbsp;&nbsp;append 到相应的节点元素中。
+        </p>
+
+        <hr>
+        <hr>
+      </div>
+      <div>
+        <h3 id="json"><a href="#json">#</a>&nbsp;<code>{{json obj}}</code></h3>
+        <p>行级 helper 。将对象按 json 输出。</p>
+        <p class="notice">前后端渲染页面通用</p>
+        <h4>source</h4>
+        <p>Handlebars.registerHelper 'pp', (json, options) -><br/> &nbsp;&nbsp;&nbsp;&nbsp;JSON.stringify(json)
+        </p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>object</code> <em>(json)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="co1">//obj = {key:value} </span>
                         <span class="me1">{{json obj}}</span>
                         <span class="co1">//➜ "{key:value}" </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div>
-                <h3 id="add"><a href="#add">#</a>&nbsp;<code>{{add a b}}</code></h3>
-                <p>行级 helper 。将两个数字相加。</p>
-                <h4>source</h4>
-                <p>Handlebars.registerHelper 'add', (a,b, options) -><br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;a + b</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>object</code> <em>(json)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div>
+        <h3 id="add"><a href="#add">#</a>&nbsp;<code>{{add a b}}</code></h3>
+        <p>行级 helper 。将两个数字相加。</p>
+        <h4>source</h4>
+        <p>Handlebars.registerHelper 'add', (a,b, options) -><br/> &nbsp;&nbsp;&nbsp;&nbsp;a + b</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>object</code> <em>(json)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="co1">//a = 1,b = 2 </span>
                         <span class="me1">{{add a b}}</span>
                         <span class="co1">//➜ 3</span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div>
-                <h3 id="formatPrice"><a href="#formatPrice">#</a>&nbsp;<code>{{formatPrice price}}</code></h3>
-                <p>行级 helper 。金额格式化输出，输入变量单位为分。
-
-                    例如输入 100 ，输出 1.00 。</p>
-                <h4>source</h4>
-                <p>--</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>price</code> <em>(number)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div>
+        <h3 id="formatPrice"><a href="#formatPrice">#</a>&nbsp;<code>{{formatPrice price}}</code></h3>
+        <p>行级 helper 。金额格式化输出，输入变量单位为分。 例如输入 100 ，输出 1.00 。</p>
+        <h4>source</h4>
+        <p>--</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>price</code> <em>(number)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1">{{formatPrice 13456}}</span>
                         <span class="co1">//➜ 134.56 </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div>
-                <h3 id="formatDate"><a href="#formatDate">#</a>&nbsp;<code>{{formatDate date type}}</code></h3>
-                <p>行级 helper 。日期格式化输出，预置三种格式，也可以自定义格式。
-
-                    预置格式：
-                    <ol>
-                        <li>gmt: EEE MMM dd HH:mm:ss Z yyyy</li>
-                        <li>day: yyyy-MM-dd</li>
-                        <li>default: yyyy-MM-dd HH:mm:ss</li>
-                    </ol>
-                    </p>
-                <h4>source</h4>
-                <p>--</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>date</code> <em>(string or number)</em></li>
-                    <li><code>type</code> <em>(day or gmt)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div>
+        <h3 id="formatDate"><a href="#formatDate">#</a>&nbsp;<code>{{formatDate date type}}</code></h3>
+        <p>行级 helper 。日期格式化输出，预置三种格式，也可以自定义格式。 预置格式：
+          <ol>
+            <li>gmt: EEE MMM dd HH:mm:ss Z yyyy</li>
+            <li>day: yyyy-MM-dd</li>
+            <li>default: yyyy-MM-dd HH:mm:ss</li>
+          </ol>
+        </p>
+        <h4>source</h4>
+        <p>--</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>date</code> <em>(string or number)</em></li>
+          <li><code>type</code> <em>(day or gmt)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1">{{json 1471942982634 day}}</span>
                         <span class="co1">//➜ 2016-08-23 </span>
                         <span class="me1">{{json 1471942982634}}</span>
                         <span class="co1">//➜ 2016-08-23 17:04:33 </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
+        <hr>
+        <hr>
+      </div>
 
-            <div class="of-part">
-                <h3 id="of"><a href="#of">#</a>&nbsp;<code>{{#of a b}}{{/of}}</code></h3>
-                <p>块级 helper 。判断对象是否属于一个约定格式的集合。<br/>
+      <div class="of-part">
+        <h3 id="of"><a href="#of">#</a>&nbsp;<code>{{#of a b}}{{/of}}</code></h3>
+        <p>块级 helper 。判断对象是否属于一个约定格式的集合。<br/> 集合的格式为字符串，多个值用逗号隔开。
 
-                    集合的格式为字符串，多个值用逗号隔开。</p>
-                <h4>source</h4>
-                <p>--</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>a</code> <em>(string)</em></li>
-                    <li><code>b</code> <em>(collect)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        </p>
+        <h4>source</h4>
+        <p>--</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>a</code> <em>(string)</em></li>
+          <li><code>b</code> <em>(collect)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="co1">//a = "str1", b ="str1,str2,str3"</span>
                         <span class="me1">{{#if}}</span>
@@ -198,25 +771,24 @@
                         <span class="me1">{{/if}}</span>
                         <span class="co1">//➜ show true </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="gt-part">
-                <h3 id="gt"><a href="#gt">#</a>&nbsp;<code>{{#gt a b}}{{/gt}}</code></h3>
-                <p>块级 helper 。大于判断，可由 ifCond 的 > 取代。</p>
-                <h4>source</h4>
-                <p>Handlebars.registerHelper "gt", (a, b, options) -><br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;if a > b<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)</p><br/>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>a</code> <em>(number)</em></li>
-                    <li><code>b</code> <em>(number)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="gt-part">
+        <h3 id="gt"><a href="#gt">#</a>&nbsp;<code>{{#gt a b}}{{/gt}}</code></h3>
+        <p>块级 helper 。大于判断，可由 ifCond 的 > 取代。</p>
+        <h4>source</h4>
+        <p>Handlebars.registerHelper "gt", (a, b, options) -><br/> &nbsp;&nbsp;&nbsp;&nbsp;if a > b<br/> &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)
+          <br/> &nbsp;&nbsp;&nbsp;&nbsp;else
+          <br/> &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)
+        </p><br/>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>a</code> <em>(number)</em></li>
+          <li><code>b</code> <em>(number)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1" style="margin-left: 20px;">{{#gt 5 2}}</span>
                         <span class="me1" style="margin-left: 40px;">show true</span>
@@ -225,25 +797,25 @@
                         <span class="me1" style="margin-left: 20px;">{{/gt}}</span>
                         <span class="co1">//➜ show true </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="lt-part">
-                <h3 id="lt"><a href="#lt">#</a>&nbsp;<code>{{#lt a b}}{{/lt}}</code></h3>
-                <p>判断a是否小于b</p>
-                <h4>source</h4>
-                <p>Handlebars.registerHelper "lt", (a, b, options) -><br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;if a < b<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)</p><br/>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>a</code> <em>(number)</em></li>
-                    <li><code>b</code> <em>(number)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="lt-part">
+        <h3 id="lt"><a href="#lt">#</a>&nbsp;<code>{{#lt a b}}{{/lt}}</code></h3>
+        <p>判断a是否小于b</p>
+        <h4>source</h4>
+        <p>Handlebars.registerHelper "lt", (a, b, options) -><br/> &nbsp;&nbsp;&nbsp;&nbsp;if a
+          < b<br/> &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)
+          <br/> &nbsp;&nbsp;&nbsp;&nbsp;else
+          <br/> &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)
+        </p><br/>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>a</code> <em>(number)</em></li>
+          <li><code>b</code> <em>(number)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1" style="margin-left: 20px;">{{#lt 5 2}}</span>
                         <span class="me1" style="margin-left: 40px;">show true</span>
@@ -252,25 +824,24 @@
                         <span class="me1" style="margin-left: 20px;">{{/lt}}</span>
                         <span class="co1">//➜ show false </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="equals-part">
-                <h3 id="equals"><a href="#equals">#</a>&nbsp;<code>{{#equals a b}}{{/equals}}</code></h3>
-                <p>块级 helper 。判断两个对象是否相等（值相等，非内存相等），可由 ifCond 的 == 取代。</p>
-                <h4>source</h4>
-                <p>Handlebars.registerHelper "equals", (a, b, options) -><br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;if ((a != null ? a.toString() : void 0) === (b != null ? b.toString() : void 0)) {<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;else<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)</p><br/>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>a</code> <em>(number)</em></li>
-                    <li><code>b</code> <em>(number)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="equals-part">
+        <h3 id="equals"><a href="#equals">#</a>&nbsp;<code>{{#equals a b}}{{/equals}}</code></h3>
+        <p>块级 helper 。判断两个对象是否相等（值相等，非内存相等），可由 ifCond 的 == 取代。</p>
+        <h4>source</h4>
+        <p>Handlebars.registerHelper "equals", (a, b, options) -><br/> &nbsp;&nbsp;&nbsp;&nbsp;if ((a != null ? a.toString() : void 0) === (b != null ? b.toString() : void 0)) {<br/> &nbsp;&nbsp;&nbsp;&nbsp;options.fn(this)
+          <br/> &nbsp;&nbsp;&nbsp;&nbsp;else
+          <br/> &nbsp;&nbsp;&nbsp;&nbsp;options.inverse(this)
+        </p><br/>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>a</code> <em>(number)</em></li>
+          <li><code>b</code> <em>(number)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1" style="margin-left: 20px;">{{#equals 5 5}}</span>
                         <span class="me1" style="margin-left: 40px;">show true</span>
@@ -279,22 +850,23 @@
                         <span class="me1" style="margin-left: 20px;">{{/equals}}</span>
                         <span class="co1">//➜ show true </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="ifCond-part">
-                <h3 id="ifCond"><a href="#ifCond">#</a>&nbsp;<code>{{#ifCond a "!=" b}}{{/ifCond}}</code></h3>
-                <p>块级 helper 。多条件判断语句。支持的判断条件有：== , != , === , !== , && , || , < , <= , > , >= 。</p>
-                <h4>source</h4>
-                <p>--</p><br/>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>a</code> <em>(number or string)</em></li>
-                    <li><code>"string"</code> <em>("=="、">"、"||"、"&&")</em></li>
-                    <li><code>b</code> <em>(number or string)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="ifCond-part">
+        <h3 id="ifCond"><a href="#ifCond">#</a>&nbsp;<code>{{#ifCond a "!=" b}}{{/ifCond}}</code></h3>
+        <p>块级 helper 。多条件判断语句。支持的判断条件有：== , != , === , !== , && , || ,
+          < , <=,> , >= 。</p>
+        <h4>source</h4>
+        <p>--</p><br/>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>a</code> <em>(number or string)</em></li>
+          <li><code>"string"</code> <em>("=="、">"、"||"、"&&")</em></li>
+          <li><code>b</code> <em>(number or string)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1" style="margin-left: 20px;">{{#ifCond 5 "!=" 4}}</span>
                         <span class="me1" style="margin-left: 40px;">show true</span>
@@ -309,21 +881,21 @@
                         <span class="me1" style="margin-left: 20px;">{{/ifCond}}</span>
                         <span class="co1">//➜ show true </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="match-part">
-                <h3 id="match"><a href="#match">#</a>&nbsp;<code>{{match "d+" string}}</code></h3>
-                <p>块级 helper 。判断正则表达式是否匹配。</p>
-                <h4>source</h4>
-                <p>--</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>regular</code> <em>(string)</em></li>
-                    <li><code>string</code> <em>(string)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="match-part">
+        <h3 id="match"><a href="#match">#</a>&nbsp;<code>{{match "d+" string}}</code></h3>
+        <p>块级 helper 。判断正则表达式是否匹配。</p>
+        <h4>source</h4>
+        <p>--</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>regular</code> <em>(string)</em></li>
+          <li><code>string</code> <em>(string)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1" style="margin-left: 20px;">{{#match "^[0-9]*$" "34343dd"}}</span>
                         <span class="me1" style="margin-left: 40px;">show true</span>
@@ -332,80 +904,79 @@
                         <span class="me1" style="margin-left: 20px;">{{/match}}</span>
                         <span class="co1">//➜ show false </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="size-part">
-                <h3 id="size"><a href="#size">#</a>&nbsp;<code>{{size obj}}</code></h3>
-                <p>行级 helper 。取集合的大小，Collection 或 Map 。</p>
-                <h4>source</h4>
-                <p>--</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>obj</code> <em>(Collection or Map )</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="size-part">
+        <h3 id="size"><a href="#size">#</a>&nbsp;<code>{{size obj}}</code></h3>
+        <p>行级 helper 。取集合的大小，Collection 或 Map 。</p>
+        <h4>source</h4>
+        <p>--</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>obj</code> <em>(Collection or Map )</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="co1">//obj = [2,3,4,8] </span>
                         <span class="me1">{{size obj}}</span>
                         <span class="co1">//➜ 4 </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="rget">
-                <h3 id="rget"><a href="#rget">#</a>&nbsp;<code>{{rget string}}</code></h3>
-                <p>行级 helper 。随机获取一个约定格式集合中的元素。<br/>
+        <hr>
+        <hr>
+      </div>
+      <div class="rget">
+        <h3 id="rget"><a href="#rget">#</a>&nbsp;<code>{{rget string}}</code></h3>
+        <p>行级 helper 。随机获取一个约定格式集合中的元素。<br/> 集合的格式为字符串，多个值用逗号隔开。
 
-                    集合的格式为字符串，多个值用逗号隔开。</p>
-                <h4>source</h4>
-                <p>--</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>string</code> <em>(string)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        </p>
+        <h4>source</h4>
+        <p>--</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>string</code> <em>(string)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1">{{rget "value1,value2,value3"}}</span>
                         <span class="co1">//➜ value2 </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="length-part">
-                <h3 id="length"><a href="#length">#</a>&nbsp;<code>{{length a}}</code></h3>
-                <p>获取参数的长度</p>
-                <h4>source</h4>
-                <p>Handlebars.registerHelper 'length', (a, options)-><br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;length = a.length
-                </p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>arguments</code> <em>(String or Arrary)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="length-part">
+        <h3 id="length"><a href="#length">#</a>&nbsp;<code>{{length a}}</code></h3>
+        <p>获取参数的长度</p>
+        <h4>source</h4>
+        <p>Handlebars.registerHelper 'length', (a, options)-><br/> &nbsp;&nbsp;&nbsp;&nbsp;length = a.length
+        </p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>arguments</code> <em>(String or Arrary)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="co1">//a = [1,2,3,4,7] </span>
                         <span class="me1">{{length a}}</span>
                         <span class="co1">//➜ 5 </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="isArray-part">
-                <h3 id="isArray"><a href="#isArray">#</a>&nbsp;<code>{{isArray a}}</code></h3>
-                <p>块级help,判断是否数组类型</p>
-                <h4>source</h4>
-                <p>--</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>a</code> <em>(all)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="isArray-part">
+        <h3 id="isArray"><a href="#isArray">#</a>&nbsp;<code>{{isArray a}}</code></h3>
+        <p>块级help,判断是否数组类型</p>
+        <h4>source</h4>
+        <p>--</p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>a</code> <em>(all)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1" style="margin-left: 20px;">{{#isArray [1,2]}}</span>
                         <span class="me1" style="margin-left: 40px;">show true</span>
@@ -414,23 +985,23 @@
                         <span class="me1" style="margin-left: 20px;">{{/isArray}}</span>
                         <span class="co1">//➜ show true </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-            <div class="between-part">
-                <h3 id="between"><a href="#between">#</a>&nbsp;<code>{{between a b c}}</code></h3>
-                <p>块级help，判断a是否介于b、c之间，即判断是否 c > = a > = b。都为number类型</p>
-                <h4>source</h4>
-                <p>Handlebars.registerHelper 'pp', (json, options) -><br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;JSON.stringify(json)</p>
-                <h4>Arguments</h4>
-                <ol>
-                    <li><code>a</code> <em>(number)</em></li>
-                    <li><code>b</code> <em>(number)</em></li>
-                    <li><code>c</code> <em>(number)</em></li>
-                </ol>
-                <h4>Example</h4>
-                <pre class="newcss">
+        <hr>
+        <hr>
+      </div>
+      <div class="between-part">
+        <h3 id="between"><a href="#between">#</a>&nbsp;<code>{{between a b c}}</code></h3>
+        <p>块级help，判断a是否介于b、c之间，即判断是否 c > = a > = b。都为number类型</p>
+        <h4>source</h4>
+        <p>Handlebars.registerHelper 'pp', (json, options) -><br/> &nbsp;&nbsp;&nbsp;&nbsp;JSON.stringify(json)
+        </p>
+        <h4>Arguments</h4>
+        <ol>
+          <li><code>a</code> <em>(number)</em></li>
+          <li><code>b</code> <em>(number)</em></li>
+          <li><code>c</code> <em>(number)</em></li>
+        </ol>
+        <h4>Example</h4>
+        <pre class="newcss">
                     <code>
                         <span class="me1" style="margin-left: 20px;">{{#between 5 2 8}}</span>
                         <span class="me1" style="margin-left: 40px;">show true</span>
@@ -439,12 +1010,13 @@
                         <span class="me1" style="margin-left: 20px;">{{/isArray}}</span>
                         <span class="co1">//➜ show true </span>
                     </code></pre>
-                <hr>
-                <hr>
-            </div>
-        </div>
-
+        <hr>
+        <hr>
+      </div>
     </div>
 
+  </div>
+
 </body>
+
 </html>

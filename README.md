@@ -3,6 +3,8 @@
 政采云项目中handlerbar的一些语法Snippets扩展
 
 用法查看:
+http://htmlpreview.github.io/?https://github.com/Jasonpetrelli/zcy-handlebars/blob/master/doc/handlebar.html
+
 
 
  模版名 | 简写
