@@ -2,8 +2,9 @@
 
 政采云项目中handlerbar的一些语法Snippets扩展
 
-[用法查看](
-http://htmlpreview.github.io/?https://github.com/Jasonpetrelli/zcy-handlebars/blob/master/doc/handlebar.html)
+
+<a href="http://htmlpreview.github.io/?https://github.com/Jasonpetrelli/zcy-handlebars/blob/master/doc/handlebar.html" target="_blank">用法查看</a>
+
 
  模版名 | 简写
 :-:|:-:
